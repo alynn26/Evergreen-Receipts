@@ -1,0 +1,43 @@
+<center><img src="https://www.URL.org/logo2bw.png" style="width:250px;"/></center><br />
+Date:  {{today | date:"mediumDate"}}<br/> 
+You have the following bills:<br />
+
+<hr/>
+<b>Current Charges: </b><br />
+<div ng-init="transactions.subtotal = 0"><!--Sets the Subtotal Varible-->
+ <div ng-repeat="xact in transactions"><!-- Starts the repeat process-->
+<table width="100%" ng-init="transactions.subtotal = transactions.subtotal -- xact.summary.balance_owed">
+ <!-- As each table is a seperate bill, add the bill to the Subtotal-->
+<tr>
+   <td valign="top" style="border-top: 2px dotted">
+    <font size="2">Bill # {{xact.id}}</font></td>
+   <td valign="top" style="border-top: 2px dotted">
+    <font size="2">{{xact.summary.xact_type}}</font></td>
+   <td valign="top" style="border-top: 2px dotted" align="right">
+    <font size="2">{{xact.summary.balance_owed | currency}}</font></td>
+</tr>
+<tr>
+   <td valign="top" colspan="3">
+     <font size="2">{{xact.title}}<br />
+     <span style="float:right">Barcode: {{xact.copy_barcode}}</font></td></span>
+</tr>
+
+    </table>
+
+  </div><!-- ng-repeat -->
+<br/>
+<table width="100%"><!-- Prints the subtotal -->
+  <tr>
+     <td valign="top" style="border-top: 1px solid"><b>Total Balance Owed: </b></td>
+     <td valign="top" style="border-top: 1px solid" align="right"><b>{{transactions.subtotal | currency}}</b></td>
+  </tr>
+</table>
+<hr/>
+{{current_location.shortname}} {{today | date:$root.egDateAndTimeFormat}}
+<div>You were helped by {{staff.first_given_name}}</div>
+<br/>
+<center>Please visit us at www.URL.org<br />
+or call us at {{includes.footer_text}}.<br />
+<br />
+<b>{{includes.event_text}}</b></center>
+ <br/> <br/> .<br/>
