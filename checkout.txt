@@ -1,0 +1,30 @@
+<div style="text-align:center;">
+<img src="http://www.url.org/logo2bw.png" style="width:250px;" /></div>
+  <div style="text-align:center;"><b>{{INCLUDE.notice_text}}</b></div>
+
+Welcome to {{current_location.name}}<br/>
+You checked out the following items:<br/>
+  <hr/>
+  <ol>
+     <div ng-init="transactions.subtotal=0"><!-- Sets the subtotal varible for price-->   
+      <li ng-repeat="checkout in circulations | orderBy:['circ.due_date','checkout.title']">
+          <div ng-init="transactions.subtotal=transactions.subtotal -- checkout.copy.price"><u> {{checkout.title}}</u><br/></div>
+           by: {{checkout.author}}<br/>
+           Barcode: {{checkout.copy.barcode}}<br/>
+           <b> Due: {{checkout.circ.due_date | egDueDate:$root.egDateAndTimeFormat:checkout.circ.circ_lib:checkout.circ.duration}}</b><br/>
+      </li>
+  </ol>
+<hr/><!-- prints the balance owning on the account-->
+  <div ng-if="patron.money_summary.balance_owed > 0" >Your account balance is: {{patron.money_summary.balance_owed | currency}}  
+  </div><br/><!-- prints the Total of all items they have checked out -->
+<div style="border:3px dotted #000;text-align:center;padding: 10px;">You Saved: {{transactions.subtotal | currency}} by borrowing from the library!</div>
+  <hr/>
+  {{current_location.shortname}} {{today | date:$root.egDateAndTimeFormat}}<br/>
+  You were helped by {{staff.first_given_name}}<br/>
+<br/>
+<div style="text-align:center;">Please visit us at www.URL.org<br/>
+or call us at {{includes.footer_text}}.<br/>
+</div>
+<b>{{includes.event_text}}</b></div>
+ <br/><!-- this prints the barcode of the patron at the bottom of the receipt.-->
+<div align="Center"; style= "font-family: 'CodabarMedium';">B{{patron.card.barcode}}D</div> <br/> .<br/>

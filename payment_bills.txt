@@ -1,0 +1,72 @@
+<center><img src="http://www.URL.org/logo2bw.png" style="width:250px;"/></center><br />
+Transaction Date: {{today | date:"mediumDate"}}<br/>
+
+A receipt of your  transaction:<hr/>
+
+<table style="width:100%"> 
+  <tr> 
+    <td>Original Balance:</td> 
+    <td align="right">{{previous_balance | currency}}</td> 
+  </tr> 
+  <tr> 
+    <td>Payment Received:</td> 
+    <td align="right">{{payment_total | currency}}</td> 
+  </tr> 
+  <tr> 
+    <td>Payment Applied:</td> 
+    <td align="right">{{payment_applied | currency}}</td> 
+  </tr> 
+  <tr> 
+    <td>Change Given:</td> 
+    <td align="right">{{change_given | currency}}</td> 
+  </tr> 
+  <tr> 
+    <td>New Balance:</td> 
+    <td align="right">{{new_balance | currency}}</td> 
+  </tr> 
+    <tr> 
+    <td>Payment Method:</td> 
+    <td align="right">
+      <div ng-switch="payment_type">
+        <div ng-switch-when="cash_payment">Cash</div>
+        <div ng-switch-when="check_payment">Check</div>
+        <div ng-switch-when="credit_card_payment">Credit Card</div>
+        <div ng-switch-when="credit_payment">Patron Credit</div>
+        <div ng-switch-when="work_payment">Work</div>
+        <div ng-switch-when="forgive_payment">Forgive</div>
+        <div ng-switch-when="goods_payment">Goods</div>
+      </div>
+    </td>
+  </tr> 
+</table> 
+
+<p>Note: {{payment_note}}</p>
+
+<p>
+Specific Bills
+  <blockquote>
+    <div ng-repeat="payment in payments">
+	<table width="100%">
+     <tr>
+          <td valign="top" style="border-top: 2px dotted">
+              <font size="2">Bill # {{payment.xact.id}}</font></td>
+          <td valign="top" style="border-top: 2px dotted">
+               <font size="2">{{payment.xact.summary.last_billing_type}}</font></td>
+          <td valign="top" style="border-top: 2px dotted" align="right">
+               <font size="2">{{payment.amount | currency}}</font></td>
+     </tr>
+     <tr>
+          <td valign="top" colspan="3"><font size="2">{{payment.xact.title}}<br />
+               Barcode: {{payment.xact.copy_barcode}}</font></td>
+     </tr></table>
+    </div>
+  </blockquote>
+</p> 
+<hr/>
+{{current_location.shortname}} {{today | date:$root.egDateAndTimeFormat}}<br/>
+ <div>You were helped by {{staff.first_given_name}}</div>
+<center>Please visit us at www.URL.org<br />
+or call us at {{includes.footer_text}}.<br />
+<br />
+<b>{{includes.event_text}}</b></center>
+ <br/> <br/> .<br/>
