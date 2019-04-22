@@ -1,0 +1,37 @@
+Holds Pull List for {{today | date:'shortDate'}}<br/>
+<table id='pull-list-template-table'>
+  <style>
+    #pull-list-template-table td,
+    #pull-list-template-table th {
+      border-collapse: collapse;
+      padding-left: 2px;
+      border: 1px solid #000;
+    }
+  </style>
+  <col width="15%">
+  <col width="18%">
+  <col width="32%">
+  <col width="13%">
+  <col width="17%">
+  <col width="5%">
+  <thead>
+    <tr>
+      <th>Shelf Location</th>
+      <th>Call Number</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Barcode</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="hold_data in holds | orderBy:['copy.location.name','volume.label']">
+      <td>{{hold_data.copy.location.name}}</td>
+      <td>{{hold_data.volume.label}}</td>
+      <td>{{hold_data.title}}</td>
+      <td>{{hold_data.author}}</td>
+      <td>{{hold_data.copy.barcode}}</td>
+      <td align="Center">{{hold_data.hold.hold_type}}</td>
+    </tr>
+  </tbody>
+</table>

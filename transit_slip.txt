@@ -1,0 +1,16 @@
+<center><font size="4">RETURN TO </font><br/><font size="5"><b>{{dest_location.shortname}}</b></font></center><br />
+<br/><br/>
+<div>
+  <div>This item needs to be routed to <b>{{dest_location.shortname}}</b></div>
+  <div>{{dest_location.name}}</div>
+  <br/>
+  <div>Barcode: {{copy.barcode}}</div>
+  <div>Title: {{title}}</div>
+  <div>Author: {{author}}</div>
+  <br/>
+
+  <div>Slip Date: {{today | date:$root.egDateAndTimeFormat}}</div>
+  <div>Printed by {{staff.first_given_name}} at {{current_location.shortname}}</div>
+
+</div>
+<br/><br/><br/><br/>.<br/>

@@ -1,0 +1,24 @@
+<center><font size="4">ROUTE TO </font><br/><font size="5"><b>{{dest_location.shortname}}</b></font></center><br />
+<br/><br/><br/><!-- Larger Route to and Library Short name at top of Receipt-->
+
+  <div>This item needs to be routed to <b>{{dest_location.shortname}}</b></div>
+  <div>{{dest_location.name}}</div>
+<br/>
+<br/>
+  <div>  Barcode: {{copy.barcode}}</div>
+  <div>  Title: {{title}}</div>
+  <div>  Author: {{author}}</div>
+<br/>
+<div>Hold for patron {{patron.family_name}}, {{patron.first_given_name}}</div>
+  <div>Barcode: {{patron.card.barcode}}</div>
+<!--  Removed contact information for Routing slips
+  <div ng-if="hold.phone_notify">Notify by phone: {{hold.phone_notify}}</div>
+  <div ng-if="hold.sms_notify">Notify by text: {{hold.sms_notify}}</div>
+  <div ng-if="hold.email_notify == 't'">Notify by email: {{patron.email}}</div>-->
+  
+  <br/>
+
+  <div>Request Date: {{hold.request_time | date:$root.egDateAndTimeFormat}}</div>
+  <div>Slip Date: {{today | date:$root.egDateAndTimeFormat}}</div>
+  <div>Printed by {{staff.first_given_name}} at {{current_location.shortname}}</div>
+<br/><br/><br/>.<br/>

@@ -1,0 +1,12 @@
+<!-- This version of the holds pull list is for printing using a Receipt Printer.  -->
+Holds Pull List for {{today | date:'shortDate'}}
+<br/><br/>
+<ol>
+ <div ng-repeat="hold_data in holds | orderBy:['copy.location.name','volume.label']">
+    <li>{{hold_data.copy.location.name}} <br/>
+        {{hold_data.volume.label}}<br/>
+        {{hold_data.title}}<br/>
+        {{hold_data.author}}<br/>
+        {{hold_data.copy.barcode}}<br/><br/></div>
+    </li>
+</ol>
