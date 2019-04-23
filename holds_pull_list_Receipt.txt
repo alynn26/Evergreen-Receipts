@@ -10,3 +10,4 @@ Holds Pull List for {{today | date:'shortDate'}}
         {{hold_data.copy.barcode}}<br/><br/></div>
     </li>
 </ol>
+<br/><br/>.<br/>

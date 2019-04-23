@@ -7,12 +7,12 @@ You have the following bills:<br />
  <div ng-repeat="xact in transactions">
 <table width="100%">
  
-<tr>
-   <td valign="top" style="border-top: 2px dotted">
+<tr  style="border-top: 2px dotted">
+   <td>
     <font size="2">Bill # {{xact.id}}</font></td>
-   <td valign="top" style="border-top: 2px dotted">
+   <td>
     <font size="2">{{xact.summary.xact_type}}</font></td>
-   <td valign="top" style="border-top: 2px dotted" align="right">
+   <td align="right">
     <font size="2">{{xact.summary.balance_owed | currency}}</font></td>
 </tr>
 <tr>

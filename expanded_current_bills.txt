@@ -49,4 +49,4 @@ You have the following bills:<br />
 <hr/>
 {{current_location.shortname}} {{today | date:$root.egDateAndTimeFormat}}
 <div>You were helped by {{staff.first_given_name}}</div>
-<br/>
+<br/> <br/> .<br/>

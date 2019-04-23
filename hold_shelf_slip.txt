@@ -41,3 +41,4 @@
   <div>Printed by {{staff.first_given_name}} at {{current_location.shortname}}</div>
 
 </div>
+<br/><br/>.<br/>
