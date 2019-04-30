@@ -1,0 +1,46 @@
+<div>
+    <div ng-switch on="hold.behind_desk">
+        <div ng-switch-when="t"><!-- This prints the full name if using Private Holds Shelf-->
+            <font size="6"><b>{{patron.family_name}}, {{patron.first_given_name}} {{patron.second_given_name}}</b></font><br />
+            <br />
+            <div><b>Expires: {{hold.shelf_expire_time |  date:'MM/dd'}}</b></div>
+            <br/>
+            This item needs to be routed to the <strong>Private Holds Shelf</strong>.
+        </div>
+        <div ng-switch-when="f"><!-- This prints just the first 4 of the Last Name and the Last last 4 of the barcode for Public Holds Shelf-->
+            <font size="6"><b>{{patron.family_name}}, {{patron.first_given_name}} {{patron.second_given_name}}</b></font><br />
+            <br />
+            <div><b>Expires: {{hold.shelf_expire_time |  date:'MM/dd'}}</b></div>
+            <br/>
+            This item needs to be routed to the <strong>Public Holds Shelf</strong>.
+        </div>
+    </div>
+    <br/>
+
+    <div>Barcode: {{copy.barcode}}</div>
+    <div>Title: {{title}}</div>
+    <br/>
+    <div>Call Number: {{call_number.prefix}} {{call_number.label}} {{call_number.suffix}}</div>
+    <br/>
+    <br/>
+    <!-- this injects a dashed line that the staff can use to remove patron information one the contact has been made-->
+    <hr style="border:dashed .3px;">
+    <br/>
+    <br/>
+    <div>Hold for patron {{patron.family_name}}, {{patron.first_given_name}} {{patron.second_given_name}}</div>
+    <div>Barcode: {{patron.card.barcode}}</div>
+    <div ng-if="hold.phone_notify">Notify by phone: {{hold.phone_notify}}</div>
+    <div ng-if="hold.sms_notify">Notify by text: {{hold.sms_notify}}</div>
+    <div ng-if="hold.email_notify == 't'">Notify by email: {{patron.email}}</div>
+    <br/>
+    <div>Request Date: {{hold.request_time | date:$root.egDateAndTimeFormat}}</div>
+    <div>Slip Date: {{today | date:$root.egDateAndTimeFormat}}</div>
+    <div>Printed by {{staff.first_given_name}} at {{current_location.shortname}}</div>
+</div>
+<br/><br/><br/><br/><br/><br/>
+<!--This adds some space then prints the first for of the last name and then the last four of the barcode, with the expiration date.-->
+<div style="writing-mode: vertical-rl; text-orientation: mixed; float:right;">
+    <span style="font-size:50px;">{{patron.family_name | limitTo:4}}{{patron.card.barcode | limitTo:-4}}</span><br/>
+    <span style="font-size:25px;">Expires: {{hold.shelf_expire_time |  date:'MM/dd'}}
+</div>
+<br/><br/>.<br/>
